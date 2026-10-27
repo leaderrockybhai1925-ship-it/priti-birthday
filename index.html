@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171014">
+  <meta name="description" content="A birthday surprise made with love for Priti.">
+  <title>For Priti, with love</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="birthday-config.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <canvas class="sky" id="starfield" aria-hidden="true"></canvas>
+  <canvas class="fireworks" id="fireworks" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="floating-hearts" id="floating-hearts" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <button class="wordmark" id="chapter-home" type="button" aria-label="Return to the first birthday page"><span class="wordmark-mark">P</span><span>for Priti <span class="wordmark-heart">&#10084;</span></span></button>
+    <div class="chapter-progress" role="progressbar" aria-label="Birthday page progress" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1">
+      <span id="chapter-count" aria-live="polite">01 / 07</span>
+      <span class="chapter-progress-track" aria-hidden="true"><span id="chapter-progress-fill"></span></span>
+    </div>
+    <button class="music-button" id="music-toggle" type="button" aria-pressed="false" title="Mute music">
+      <span class="music-icon" aria-hidden="true">&#9835;</span><span class="music-label">Mute music</span>
+    </button>
+  </header>
+
+  <main id="chapter-stage">
+    <section class="hero section-wrap chapter active" id="home" aria-labelledby="hero-title">
+      <div class="birthday-particle-scene" aria-hidden="true">
+        <canvas class="birthday-particle-canvas" id="birthday-particles"></canvas>
+      </div>
+      <p class="visually-hidden" id="birthday-scene-status" aria-live="polite"></p>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> A little universe, just for you</p>
+        <h1 id="hero-title">Today, the<br><em>stars are yours.</em></h1>
+        <p class="hero-intro">For the girl who makes ordinary days feel like something worth remembering.</p>
+        <p class="text-link">There is a letter waiting for you <span aria-hidden="true">&#10084;</span></p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="moon"></div>
+        <span class="orbit-heart heart-one">&#10084;</span><span class="orbit-heart heart-two">&#10084;</span>
+        <span class="spark spark-one">&#10022;</span><span class="spark spark-two">&#10022;</span>
+        <span class="hero-caption">a wish, wrapped in starlight</span>
+      </div>
+      <div class="countdown-band" aria-label="Countdown to Priti's birthday">
+        <div class="countdown-heading"><span class="live-dot"></span><span id="countdown-caption">Counting down to October 28</span></div>
+        <div class="countdown" id="countdown" aria-live="off">
+          <div class="count-unit"><span class="count-number" id="days">--</span><span class="count-label">days</span></div>
+          <span class="count-separator">:</span>
+          <div class="count-unit"><span class="count-number" id="hours">--</span><span class="count-label">hours</span></div>
+          <span class="count-separator">:</span>
+          <div class="count-unit"><span class="count-number" id="minutes">--</span><span class="count-label">minutes</span></div>
+          <span class="count-separator">:</span>
+          <div class="count-unit"><span class="count-number" id="seconds">--</span><span class="count-label">seconds</span></div>
+        </div>
+        <p class="countdown-note" id="countdown-note">until we celebrate you</p>
+      </div>
+    </section>
+
+    <section class="letter-section section-wrap chapter" id="letter" aria-labelledby="letter-title" hidden>
+      <div class="section-kicker"><span>01</span><span class="kicker-rule"></span><span>Just between us</span></div>
+      <div class="letter-layout">
+        <div class="letter-heading">
+          <p class="eyebrow">A note for your day</p>
+          <h2 id="letter-title">A few words,<br><em>from my heart.</em></h2>
+          <p class="section-aside">No grand reason. Just because you deserve to hear it.</p>
+          <button class="button button-outline" id="letter-toggle" type="button" aria-expanded="false" aria-controls="love-letter">
+            <span class="button-icon" aria-hidden="true">&#9993;</span><span id="letter-button-label">Open your letter</span>
+          </button>
+        </div>
+        <article class="love-letter" id="love-letter" hidden>
+          <div class="letter-paper">
+            <div class="letter-paper-inner">
+              <p class="letter-date">October 28 <span aria-hidden="true">&#10022;</span></p>
+              <p class="letter-greeting">Dear Priti,</p>
+              <p>Replace this paragraph with a short personal note, a sweet memory, or a sentence that feels like you.</p>
+              <p>Replace this paragraph with a little wish, a thank-you, or a moment you want to keep close.</p>
+              <p>Replace this paragraph with the final line you want to leave for this birthday.</p>
+              <p class="letter-signoff">With love,<br><span>&#10084;</span></p>
+            </div>
+          </div>
+        </article>
+        <div class="letter-seal" aria-hidden="true"><span>&#10084;</span></div>
+      </div>
+    </section>
+
+    <section class="gallery-section section-wrap chapter" id="gallery" aria-labelledby="gallery-title" hidden>
+      <div class="section-kicker"><span>02</span><span class="kicker-rule"></span><span>Little snapshots</span></div>
+      <div class="section-heading-row">
+        <div><p class="eyebrow">Your favorite faces, places, days</p><h2 id="gallery-title">A gallery of <em>us.</em></h2></div>
+        <p class="section-aside">Add your favorite photos to make this corner yours.</p>
+      </div>
+      <div class="photo-showcase" id="photo-grid" aria-live="polite">
+        <div class="gallery-slide-shell">
+          <img id="gallery-slide-image" src="assets/photos/slide-01.svg" alt="Birthday memory" loading="eager">
+          <div class="gallery-slide-caption" id="gallery-slide-caption">Replace with your caption</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="memories-section section-wrap chapter" id="memories" aria-labelledby="memories-title" hidden>
+      <div class="section-kicker"><span>03</span><span class="kicker-rule"></span><span>Still unfolding</span></div>
+      <div class="section-heading-row timeline-heading">
+        <div><p class="eyebrow">A story with the best parts ahead</p><h2 id="memories-title">The little things<br><em>become everything.</em></h2></div>
+        <p class="section-aside">A few blank pages for all the moments still to come.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-entry"><span class="timeline-marker">&#10022;</span><p class="timeline-date">A moment to keep</p><h3>The first page</h3><p>Every favorite story starts somewhere. Add the little detail that makes yours yours.</p></article>
+        <article class="timeline-entry"><span class="timeline-marker">&#10084;</span><p class="timeline-date">One of many</p><h3>The kind of day that stays</h3><p>Maybe it was a laugh, a long walk, or a very ordinary Tuesday. The best memories don't need a reason.</p></article>
+        <article class="timeline-entry"><span class="timeline-marker">&#10022;</span><p class="timeline-date">October 28, 2026</p><h3>Another year of you</h3><p>A fresh chapter, a new wish, and a whole lot of love cheering you on.</p></article>
+      </div>
+      <div class="memories-transition" id="memories-transition" role="timer" aria-live="off" aria-label="Automatic transition to the next page in 10 seconds">
+        <span class="memories-transition-label">Continuing in <span id="memories-seconds">10</span>s</span>
+        <span class="memories-transition-track" aria-hidden="true"><span id="memories-transition-fill"></span></span>
+      </div>
+    </section>
+
+    <section class="surprise-section section-wrap chapter" id="surprise" aria-labelledby="surprise-title" hidden>
+      <div class="section-kicker"><span>04</span><span class="kicker-rule"></span><span>Go on, open it</span></div>
+      <div class="surprise-layout">
+        <div class="surprise-copy"><p class="eyebrow">One small surprise</p><h2 id="surprise-title">There is something<br><em>with your name on it.</em></h2><p class="section-aside">A tiny reminder that you are loved in ways bigger than this box.</p></div>
+        <div class="gift-area">
+          <button class="gift-box" id="gift-box" type="button" aria-label="Open your birthday gift" aria-expanded="false" aria-controls="gift-reveal">
+            <span class="gift-lid"></span><span class="gift-bow gift-bow-left"></span><span class="gift-bow gift-bow-right"></span><span class="gift-ribbon"></span><span class="gift-front"></span><span class="gift-shadow"></span>
+          </button>
+          <div class="gift-reveal" id="gift-reveal" hidden>
+            <img class="gift-reveal-gif" src="assets/gifs/gift-reveal.gif" alt="A little birthday surprise" onerror="this.hidden = true">
+            <div class="birthday-bouquet" aria-label="A bouquet of birthday flowers">
+              <span class="bouquet-stem stem-one"></span><span class="bouquet-stem stem-two"></span><span class="bouquet-stem stem-three"></span>
+              <span class="bouquet-flower flower-one">✿</span><span class="bouquet-flower flower-two">✿</span><span class="bouquet-flower flower-three">✿</span>
+              <span class="bouquet-flower flower-four">✿</span><span class="bouquet-flower flower-five">✿</span>
+              <span class="bouquet-wrap"></span><span class="bouquet-ribbon"></span>
+            </div>
+            <div class="flying-kiss-stage" aria-live="polite">
+              <img class="flying-kiss-gif" id="flying-kiss-gif" alt="A flying kiss" hidden>
+              <div class="kiss-fallback" id="kiss-fallback" aria-label="A flying kiss" hidden><span class="kiss-mark" aria-hidden="true">&#128139;</span><span class="kiss-heart" aria-hidden="true">&#10084;</span></div>
+            </div>
+            <article class="antique-letter" aria-label="A birthday letter">
+              <span class="letter-corner letter-corner-top" aria-hidden="true">&#10022;</span>
+              <div class="gift-letter-copy" id="gift-letter-copy"><p>Your gift is this: a whole new year to become even more yourself.</p></div>
+              <span class="letter-corner letter-corner-bottom" aria-hidden="true">&#10022;</span>
+            </article>
+          </div>
+          <p class="gift-hint" id="gift-hint">Tap the box to open</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cake-section section-wrap chapter" id="cake" aria-labelledby="cake-title" hidden>
+      <div class="section-kicker"><span>05</span><span class="kicker-rule"></span><span>Make a wish</span></div>
+      <div class="cake-copy"><p class="eyebrow">One candle for every wish</p><h2 id="cake-title">Your wish<br><em>is on its way.</em></h2><p class="section-aside">Close your eyes. Think of something wonderful.</p></div>
+      <div class="cake-scene" id="cake-scene" aria-label="A floating birthday candle being lit by a match">
+        <div class="candle-stage" id="candle-stage">
+          <div class="candle-ambient" aria-hidden="true"></div>
+          <div class="candle-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="candle-breeze" id="candle-breeze" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="floating-candle" aria-hidden="true">
+            <span class="candle-flame"><span class="flame-core"></span></span>
+            <span class="candle-wick"></span>
+            <span class="candle-wax"><span class="candle-wax-sheen"></span><span class="candle-drip candle-drip-one"></span><span class="candle-drip candle-drip-two"></span></span>
+          </div>
+          <div class="candle-smoke" id="candle-smoke" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="lighting-match" aria-hidden="true"><span class="match-stick"></span><span class="match-tip"></span><span class="match-spark"></span><span class="match-flame"></span></div>
+        </div>
+        <p class="candle-status" id="cake-status" aria-live="polite">Three wishes, just for you.</p>
+      </div>
+      <div class="candle-controls" aria-label="Candle controls">
+        <button class="button button-solid" id="wish-button" type="button"><span class="button-icon" aria-hidden="true">&#10022;</span><span>Make a Wish</span></button>
+        <button class="button button-outline" id="lights-toggle" type="button" aria-pressed="false"><span>Turn Off the Lights</span></button>
+        <button class="button button-outline" id="blow-candle" type="button"><span>Blow Out the Candle</span></button>
+      </div>
+    </section>
+
+    <section class="finale-section section-wrap chapter" id="finale" aria-labelledby="finale-note" hidden>
+      <p class="finale-message" id="finale-note" aria-live="polite"></p>
+      <p class="finale-credit">Created by Itachi</p>
+    </section>
+  </main>
+
+  <nav class="chapter-controls" aria-label="Birthday page controls">
+    <button class="chapter-button chapter-back" id="chapter-back" type="button" disabled><span aria-hidden="true">&#8592;</span><span>Back</span></button>
+    <span class="chapter-wait" id="chapter-wait" role="timer" aria-live="off">The next page unlocks in 30 seconds.</span>
+    <button class="chapter-button chapter-next" id="chapter-next" type="button" aria-describedby="chapter-wait" disabled><span id="chapter-next-label">Continue in 30s</span><span aria-hidden="true">&#8594;</span></button>
+  </nav>
+
+  <footer class="site-footer"><span>Made for Priti, with love.</span><span class="footer-star" aria-hidden="true">&#10022;</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
